@@ -8,7 +8,7 @@ MariaDB is a community-developed fork of the MySQL relational database managemen
 
 Clone the repository and build docker image: 
 
- # docker build -t mariadb .
+  docker build -t mariadb .
 
 ## Configuration 
 
