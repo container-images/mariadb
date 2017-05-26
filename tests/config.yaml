@@ -1,0 +1,13 @@
+document: modularity-testing
+version: 1
+name: mariadb
+modulemd-url: http://pkgs.fedoraproject.org/cgit/modules/mariadb.git/plain/mariadb.yaml?h=f26
+service:
+    port: 3036
+module:
+    docker:
+        start: "docker run -it --name mariadb_database -e MYSQL_USER=user -e MYSQL_PASSWORD=pass -e MYSQL_DATABASE=db -p 3306:3306"
+        container: mariadb
+    rpm:
+        repo:
+            - http://mirror.vutbr.cz/fedora/releases/26/Everything/x86_64/os/
