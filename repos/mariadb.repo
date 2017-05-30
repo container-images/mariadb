@@ -1,8 +1,6 @@
 [mariadb]
 name=mariadb
-#baseurl=https://kojipkgs.fedoraproject.org/compose/latest-Fedora-Modular-26/compose/Server/x86_64/os/
-#baseurl=https://kojipkgs.stg.fedoraproject.org/compose/branched/jkaluza/latest-Fedora-Modular-26/compose/Server/x86_64/os/
-baseurl=https://kojipkgs.fedoraproject.org/repos/module-9e9ace960de4cbd9-build/latest/x86_64/
+baseurl=https://kojipkgs.fedoraproject.org/compose/latest-Fedora-Modular-26/compose/Server/x86_64/os/
 enabled=0
 gpgcheck=false
 modules=1
