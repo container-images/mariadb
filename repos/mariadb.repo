@@ -1,4 +1,6 @@
-[mongodb]
-name=mongodb
-baseurl=https://kojipkgs.fedoraproject.org/repos/module-ea91dfb011b3066c-build/latest/x86_64/
+[mariadb]
+name=mariadb
+baseurl=https://kojipkgs.fedoraproject.org/compose/latest-Fedora-Modular-26/compose/Server/x86_64/os/
 enabled=0
+gpgcheck=false
+modules=1
