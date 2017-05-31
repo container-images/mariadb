@@ -1,7 +1,8 @@
 MariaDB Docker image
 ====================
 
-This container image includes MariaDB server 10.1 for the Fedora 26 Boltron general usage.
+This repository contains Dockerfile for MariaDB server 10.1 based on [baseruntime](""https://hub.docker.com/r/baseruntime/baseruntime/) for the Fedora 26 Boltron general usage.
+For more information about modules see official [Fedora Modularity documentation](docs.pagure.org/modularity/).
 
 Environment variables and volumes
 ----------------------------------
