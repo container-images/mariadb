@@ -32,10 +32,12 @@ LABEL summary="MariaDB is a multi-user, multi-threaded SQL database server" \
 COPY repos/* /etc/yum.repos.d/
 
 RUN sed -i 's|/jkaluza/|/ralph/|g' /etc/yum.repos.d/build.repo && \
-    INSTALL_PKGS="rsync tar gettext hostname bind-utils python3  mariadb-server policycoreutils" && \
-    microdnf --nodocs --enablerepo mariadb install -y mariadb && \
-    microdnf --nodocs --enablerepo fedora install -y $INSTALL_PKGS && \
+    INSTALL_PKGS="rsync tar gettext hostname bind-utils python3 policycoreutils" && \
+    microdnf --nodocs install dnf -y && \ 
     microdnf clean all && \
+    dnf --nodocs install mariadb mariadb-server -y --best --allowerasing && \
+    dnf --nodocs install $INSTALL_PKGS -y --best --allowerasing && \
+    dnf clean all && \
     mkdir -p /var/lib/mysql/data && chown -R mysql.0 /var/lib/mysql && \
     test "$(id mysql)" = "uid=27(mysql) gid=27(mysql) groups=27(mysql)"
 
