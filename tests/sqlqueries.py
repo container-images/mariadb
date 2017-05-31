@@ -46,8 +46,9 @@ class SqlQueriesCheck(module_framework.AvocadoTest):
         # wait for mariadb to start
         time.sleep(15)
 
-        container_ip = self.runHost(
-            "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' mariadb_database").stdout
+        container_ip = self.runHost("docker inspect -f '{{{{range .NetworkSettings.Networks}}}}{{{{.IPAddress}}}}{{{{end}}}}' mariadb_database").stdout
+
+        print "CONTAINER IP ASA:" + container_ip
 
         # remove end of line character
         container_ip = container_ip[:-1]
@@ -65,7 +66,7 @@ class SqlQueriesCheck(module_framework.AvocadoTest):
         # wait for mariadb to start
         time.sleep(15)
 
-        container_ip = self.runHost("docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' mariadb_database").stdout
+        container_ip = self.runHost("docker inspect -f '{{{{range .NetworkSettings.Networks}}}}{{{{.IPAddress}}}}{{{{end}}}}' mariadb_database").stdout
 
         # remove end of line character
         container_ip = container_ip[:-1]
@@ -88,7 +89,7 @@ class SqlQueriesCheck(module_framework.AvocadoTest):
         time.sleep(15)
 
         container_ip = self.runHost(
-            "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' mariadb_database").stdout
+            "docker inspect -f '{{{{range .NetworkSettings.Networks}}}}{{{{.IPAddress}}}}{{{{end}}}}' mariadb_database").stdout
 
         # remove end of line character
         container_ip = container_ip[:-1]
