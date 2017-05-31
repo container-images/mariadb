@@ -50,6 +50,10 @@ COPY root /
 
 RUN rm -rf /etc/my.cnf.d/*
 
+RUN /usr/libexec/container-setup
+
+VOLUME ["/var/lib/mysql/data"]
+
 USER 27
 
 ENTRYPOINT ["container-entrypoint"]
