@@ -131,7 +131,7 @@ as opposed to the statements (ie, DML like insert...) that caused the change.
 
 Test
 --------------------------------------
-This repository also provides tests (based on [MTF](https://pagure.io/modularity-testing-framework/tree/master)) which checks basic functionality of the MongoDB image. 
+This repository also provides tests (based on [MTF](https://pagure.io/modularity-testing-framework/tree/master)) which checks basic functionality of the MariaDB image. 
 
 Run the tests using Makefile :
 ```
