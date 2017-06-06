@@ -29,15 +29,10 @@ LABEL summary="MariaDB is a multi-user, multi-threaded SQL database server" \
       io.openshift.expose-services="3306:mysql" \
       io.openshift.tags="database,mysql,mariadb,mariadb101,galera" 
 
-#COPY repos/* /etc/yum.repos.d/
-#  sed -i 's|/jkaluza/|/ralph/|g' /etc/yum.repos.d/build.repo && \
-
 RUN INSTALL_PKGS="rsync tar gettext hostname bind-utils python3 policycoreutils" && \
-    microdnf --nodocs install dnf -y && \ 
+    microdnf --nodocs install mariadb mariadb-server -y && \
+    microdnf --nodocs install $INSTALL_PKGS -y && \
     microdnf clean all && \
-    dnf --nodocs install mariadb mariadb-server -y --best --allowerasing && \
-    dnf --nodocs install $INSTALL_PKGS -y --best --allowerasing && \
-    dnf clean all && \
     mkdir -p /var/lib/mysql/data && chown -R mysql.0 /var/lib/mysql && \
     test "$(id mysql)" = "uid=27(mysql) gid=27(mysql) groups=27(mysql)"
 
