@@ -1,10 +1,9 @@
-#hope all deps are right
 document: modulemd
 version: 1
 data:
     summary: MariaDB Module
-    description:  MariaDB is a community developed branch of MySQL. MariaDB is a multi-user, 
-                  multi-threaded SQL database server.
+    description:  MariaDB is a community developed branch of MySQL.
+                  MariaDB is a multi-user, multi-threaded SQL database server.
                   It is a client/server implementation consisting of a server daemon (mysqld)
                   and many different client programs and libraries. The base package
                   contains the standard MariaDB/MySQL client programs and generic MySQL files.
@@ -12,6 +11,7 @@ data:
         module: [ GPLv2 with exceptions and LGPLv2 and BSD ]
     dependencies:
         buildrequires:
+#           base-runtime: f26
             perl: f26
             bootstrap: f26
             common-build-dependencies: f26
@@ -28,9 +28,11 @@ data:
         default:
             rpms:
                 - mariadb
+                - mariadb-server 
     api:
         rpms:
                 - mariadb
+                - mariadb-server
     components:
         rpms:
             mariadb:
@@ -62,7 +64,7 @@ data:
                 ref: f26
                 buildorder: 3
             systemtap:
-                rationale:  MariaDB  package.
+                rationale:  A dependency of mariadb.
                 ref: f26
                 buildorder: 5
             compat-openssl10:
@@ -85,3 +87,7 @@ data:
                 rationale:  A dependency of mariadb.
                 ref: f26
                 buildorder: 5
+            net-tools:
+                rationale:  A dependency of mariadb.
+                ref: f26
+                buildorder: 9
