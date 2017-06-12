@@ -1,4 +1,4 @@
-FROM baseruntime/baseruntime:latest
+FROM modularitycontainers/boltron-preview:latest
 
 ENV NAME=mariadb \
     ARCH=x86_64 \
@@ -29,12 +29,11 @@ LABEL summary="MariaDB is a multi-user, multi-threaded SQL database server" \
       io.openshift.expose-services="3306:mysql" \
       io.openshift.tags="database,mysql,mariadb,mariadb101,galera" 
 
-RUN INSTALL_PKGS="rsync tar gettext hostname bind-utils python3 policycoreutils" && \
-    microdnf --nodocs install mariadb mariadb-server -y && \
-    microdnf --nodocs install $INSTALL_PKGS -y && \
-    microdnf clean all && \
-    mkdir -p /var/lib/mysql/data && chown -R mysql.0 /var/lib/mysql && \
-    test "$(id mysql)" = "uid=27(mysql) gid=27(mysql) groups=27(mysql)"
+# We are instaling mariadb module 
+RUN dnf install -y mariadb  && dnf clean all && \
+    mkdir -p /var/lib/mysql/data && chown -R mysql.0 /var/lib/mysql
+
+RUN test "$(id mysql)" = "uid=27(mysql) gid=27(mysql) groups=27(mysql)"
 
 ENV CONTAINER_SCRIPTS_PATH=/usr/share/container-scripts/mysql \
     MYSQL_PREFIX=/usr
