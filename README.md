@@ -4,6 +4,14 @@ MariaDB Docker image
 This repository contains Dockerfile for MariaDB server 10.1 based on [baseruntime](""https://hub.docker.com/r/baseruntime/baseruntime/) for the Fedora 26 Boltron general usage.
 For more information about modules see official [Fedora Modularity documentation](docs.pagure.org/modularity/).
 
+Modularity functionality
+------------------------
+In default Dockerfile we use `boltron-preview:latest` image, which consists dnf prototype with modularity functionality. This means command: `dnf install -y mariadb  && dnf clean all && \` will install not only mariadb package but mariadb module with the default profile, which in this case suppose to install mariadb, mariadb-server, gettext, policycoreutils and several other packages as dependecy.  
+
+Dockerfile.microdnf
+-------------------
+Using e.g. `docker build -t mariadb_microdnf:latest -f Dockerfile.microdnf .` will create MariaDB docker image from baseruntime and using `microdnf` to install `mariadb, mariadb-server` and their dependencies and packages needed to run the container. 
+
 Environment variables and volumes
 ----------------------------------
 
