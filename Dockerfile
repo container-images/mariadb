@@ -29,9 +29,11 @@ LABEL summary="MariaDB is a multi-user, multi-threaded SQL database server" \
       io.openshift.expose-services="3306:mysql" \
       io.openshift.tags="database,mysql,mariadb,mariadb101,galera" 
 
-# We are instaling mariadb module 
-RUN dnf install -y policycoreutils gettext && dnf clean all && \  
-    dnf install -y mariadb  && dnf clean all && \
+# We are instaling packages needed for container  
+RUN microdnf install -y policycoreutils gettext && microdnf clean all 
+
+# We are instaling mariadb module
+RUN dnf install -y mariadb  && dnf clean all && \
     mkdir -p /var/lib/mysql/data && chown -R mysql.0 /var/lib/mysql
 
 RUN test "$(id mysql)" = "uid=27(mysql) gid=27(mysql) groups=27(mysql)"
