@@ -11,24 +11,30 @@ data:
         module: [ GPLv2 with exceptions and LGPLv2 and BSD ]
     dependencies:
         buildrequires:
-#           base-runtime: f26
             perl: f26
             bootstrap: f26
             common-build-dependencies: f26
-#           shared-userspace: f26
         requires:
             shared-userspace: f26
             base-runtime: f26
             perl: f26
     references:
-        community: https://fedoraproject.org/wiki/Modularity
-        documentation: https://fedoraproject.org/wiki/Fedora_Packaging_Guidelines_for_Modules
-        tracker: https://taiga.fedorainfracloud.org/project/modularity
+         community: https://docs.pagure.org/modularity/
+         documentation: https://github.com/container-images/mariadb/
+         tracker: https://github.com/modularity-modules/mariadb
     profiles:
         default:
             rpms:
                 - mariadb
                 - mariadb-server 
+                - gettext
+        server:
+            rpms:
+                - mariadb-server 
+                - gettext
+        client:
+            rpms:
+                - mariadb 
     api:
         rpms:
                 - mariadb
@@ -59,10 +65,11 @@ data:
                 rationale:  Dep of policycoreutils  package.
                 ref: f26
                 buildorder: 3
-            libselinux:
-                rationale:  Dep of policycoreutils  package.
-                ref: f26
-                buildorder: 3
+#           libselinux:
+#               rationale:  Dep of policycoreutils  package.
+#               ref: f26
+#               buildorder: 3
+# this makes conflict with BRT 
             systemtap:
                 rationale:  A dependency of mariadb.
                 ref: f26
@@ -91,3 +98,8 @@ data:
                 rationale:  A dependency of mariadb.
                 ref: f26
                 buildorder: 9
+#           gettext:
+#              rationale:  A dependency of mariadb.
+#              ref: f26
+#              buildorder: 9
+
