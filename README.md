@@ -6,7 +6,7 @@ For more information about modules see official [Fedora Modularity documentation
 
 Modularity functionality
 ------------------------
-In default Dockerfile we use `boltron-preview:latest` image, which consists dnf prototype with modularity functionality. This means command: `dnf install -y mariadb  && dnf clean all && \` will install not only mariadb package but mariadb module with the default profile, which in this case suppose to install mariadb, mariadb-server, gettext, policycoreutils and several other packages as dependecy.  
+In default Dockerfile we use `boltron-preview:latest` image, which consists dnf prototype with modularity functionality. This means command: `dnf install -y mariadb  && dnf clean all && \` will install not only mariadb package but mariadb module with the default profile, which in this case suppose to install mariadb, mariadb-server, gettext, policycoreutils and several other packages as dependecy. If one need to install single package, the `--rpm` parameter  need to be set before package name.  
 
 Dockerfile.microdnf
 -------------------
