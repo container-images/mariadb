@@ -6,7 +6,7 @@ service:
     port: 3036
 module:
     docker:
-        start: "docker run -it --name mariadb_database -e MYSQL_USER=user -e MYSQL_PASSWORD=pass -e MYSQL_DATABASE=db -p 3306:3306"
+        start: "docker run -it --name mariadb_database --rm -e MYSQL_USER=user -e MYSQL_PASSWORD=pass -e MYSQL_DATABASE=db -p 3306:3306"
         container: docker.io/modularitycontainers/mariadb
         labels:
           summary: "MariaDB is a multi-user, multi-threaded SQL database server"
