@@ -1,4 +1,4 @@
-IMAGE_NAME = mariadb
+IMAGE_NAME = modularitycontainers/mariadb
 
 MODULEMDURL=file://mariadb.yaml
 
