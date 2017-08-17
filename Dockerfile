@@ -1,4 +1,4 @@
-FROM modularitycontainers/boltron-preview:latest
+FROM registry.fedoraproject.org/f26-modular/boltron
 
 ENV NAME=mariadb \
     ARCH=x86_64 \
@@ -30,8 +30,8 @@ LABEL summary="MariaDB is a multi-user, multi-threaded SQL database server" \
       io.openshift.tags="database,mysql,mariadb,mariadb101,galera" 
 
 # We are instaling packages needed for container  
-RUN dnf -y --rpm --nodocs install policycoreutils && dnf clean all && \ 
-    dnf -y --nodocs install mariadb  && dnf clean all && \
+RUN dnf -y --rpm --nodocs install policycoreutils gettext && dnf clean all && \ 
+    dnf -y --nodocs install mariadb && dnf clean all && \
     mkdir -p /var/lib/mysql/data && chown -R mysql.0 /var/lib/mysql
 
 RUN test "$(id mysql)" = "uid=27(mysql) gid=27(mysql) groups=27(mysql)"
